@@ -1,0 +1,6 @@
+@LoggingMicroservice_HostAddress = http://localhost:5225
+
+GET {{LoggingMicroservice_HostAddress}}/api/ExternalIp/get-client-ip
+Accept: application/json
+
+###

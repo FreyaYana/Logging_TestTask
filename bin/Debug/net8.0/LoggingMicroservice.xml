@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LoggingMicroservice</name>
+    </assembly>
+    <members>
+        <member name="M:LoggingMicroservice.Controllers.ExternalIpController.GetClientIp">
+            <summary>
+            Получить IP-адрес клиента
+            </summary>
+            <returns>IP-адрес клиента</returns>
+            <response code="200">Возвращает IP-адрес клиента</response>
+            <response code="404">IP-адрес клиента не найден</response>
+            <response code="401">Требуется авторизация</response>
+        </member>
+        <member name="M:LoggingMicroservice.Controllers.LogDataApiController.GetLogFileDataAsync(System.Threading.CancellationToken)">
+            <summary>
+            Получить содержимое файла логирования
+            </summary>
+            <returns>Содержимое файла логирования</returns>
+            <response code="200">Возвращает содержимое файла логирования</response>
+            <response code="404">Файл логирования не найден</response>
+            <response code="401">Требуется авторизация</response>
+        </member>
+        <member name="M:LoggingMicroservice.Controllers.LogDataApiController.GetLogFile">
+            <summary>
+            Получить файл логирования
+            </summary>
+            <returns>Содержимое файла логирования</returns>
+            <response code="200">Возвращает содержимое файла логирования</response>
+            <response code="404">Файл логирования не найден</response>
+            <response code="401">Требуется авторизация</response>
+        </member>
+        <member name="P:LoggingMicroservice.Infrastructure.Options.BasicAuthenticationOptions.Username">
+            <summary>
+            Валидный логин
+            </summary>
+        </member>
+        <member name="P:LoggingMicroservice.Infrastructure.Options.BasicAuthenticationOptions.Password">
+            <summary>
+            Валидный пароль
+            </summary>
+        </member>
+        <member name="P:LoggingMicroservice.Infrastructure.Options.LoggingInfoOptions.LogFileDirectory">
+            <summary>
+            Путь до папки с логами 
+            </summary>
+        </member>
+        <member name="P:LoggingMicroservice.Infrastructure.Options.LoggingInfoOptions.LogFilePath">
+            <summary>
+            Шаблон с именем файла для логов 
+            </summary>
+        </member>
+        <member name="P:LoggingMicroservice.Infrastructure.Options.LoggingInfoOptions.LogFileSizeLimitBytes">
+            <summary>
+            Ограничение по памяти 
+            </summary>
+        </member>
+        <member name="M:LoggingMicroservice.Logic.Abstract.LogFileLogic.GetLogFileData(System.Threading.CancellationToken)">
+            <summary>
+            Возвращает последний по дате лог-файл
+            </summary>
+        </member>
+    </members>
+</doc>
