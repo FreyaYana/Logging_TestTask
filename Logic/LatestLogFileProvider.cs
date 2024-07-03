@@ -16,11 +16,12 @@ namespace LoggingMicroservice.Logic
         }
 
         /// <summary>
-        /// Возвращает последний по дате лог-файл
+        /// Возвращает последний по дате лог-файл 
+        /// // NOTE : логику можно задать любую, выбрала ту для примера
         /// </summary>
-        public async Task<string?> GetLogFileData(CancellationToken token)
+        public async Task<string?> GetLogFileContent(CancellationToken token)
         {
-            string? filePath = GetLastLofFilePath();
+            string? filePath = GetLogFilePath();
             if (filePath == null)
             {
                 _logger.LogWarning("Log file not found at path: {LogFilePath}", filePath);
@@ -32,13 +33,13 @@ namespace LoggingMicroservice.Logic
             using (var streamReader = new StreamReader(fileStream))
             {
                 logContent = await streamReader.ReadToEndAsync(token);
-                _logger.LogInformation("Log file content requested");
-
-                return logContent;
             }
+
+            _logger.LogInformation("Log file content requested");
+            return logContent;
         }
 
-        public string? GetLastLofFilePath()
+        public string? GetLogFilePath()
         {
             DirectoryInfo directoryInfo = new DirectoryInfo(_logFileDirectory);
             var filePath = directoryInfo.GetFiles()

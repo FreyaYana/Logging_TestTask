@@ -57,7 +57,6 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
             }
             else
             {
-
                 return AuthenticateResult.Fail("Authentication Failed");
             }
         }

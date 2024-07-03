@@ -10,9 +10,9 @@ namespace LoggingMicroservice.Controllers
     public class LogDataApiController : ControllerBase
     {
         private readonly ILogger<LogDataApiController> _logger;
-        private readonly ILogFileLogic _logLogic;
+        private readonly ILogFileProvider _logLogic;
 
-        public LogDataApiController(ILogFileLogic logLogic, ILogger<LogDataApiController> logger)
+        public LogDataApiController(ILogFileProvider logLogic, ILogger<LogDataApiController> logger)
         {
             _logLogic = logLogic;
             _logger = logger;
@@ -34,7 +34,7 @@ namespace LoggingMicroservice.Controllers
         {
             try
             {
-                var logContent = await _logLogic.GetLogFileData(token);
+                var logContent = await _logLogic.GetLogFileContent(token);
                 if (string.IsNullOrEmpty(logContent))
                 {
                     return NotFound("Log file not foun");
@@ -65,7 +65,7 @@ namespace LoggingMicroservice.Controllers
         {
             try
             {
-                string? filePath = _logLogic.GetLastLofFilePath();
+                string? filePath = _logLogic.GetLogFilePath();
                 if (string.IsNullOrEmpty(filePath))
                 {
                     _logger.LogWarning("Log file path not found: {LogFilePath}", filePath);

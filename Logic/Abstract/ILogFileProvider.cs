@@ -3,8 +3,14 @@ namespace LoggingMicroservice.Logic.Abstract
 {
     public interface ILogFileProvider
     {
-        string? GetLastLofFilePath();
+        /// <summary>
+        /// Получить адрес до файла логами
+        /// </summary>
+        string? GetLogFilePath();
 
-        Task<string?> GetLogFileData(CancellationToken token);
+        /// <summary>
+        /// Получить контент файла с логами
+        /// </summary>
+        Task<string?> GetLogFileContent(CancellationToken token);
     }
 }

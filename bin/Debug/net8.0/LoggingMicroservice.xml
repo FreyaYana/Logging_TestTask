@@ -56,9 +56,20 @@
             Ограничение по памяти 
             </summary>
         </member>
-        <member name="M:LoggingMicroservice.Logic.Abstract.LogFileLogic.GetLogFileData(System.Threading.CancellationToken)">
+        <member name="M:LoggingMicroservice.Logic.Abstract.ILogFileProvider.GetLogFilePath">
             <summary>
-            Возвращает последний по дате лог-файл
+            Получить адрес до файла логами
+            </summary>
+        </member>
+        <member name="M:LoggingMicroservice.Logic.Abstract.ILogFileProvider.GetLogFileContent(System.Threading.CancellationToken)">
+            <summary>
+            Получить контент файла с логами
+            </summary>
+        </member>
+        <member name="M:LoggingMicroservice.Logic.LatestLogFileProider.GetLogFileContent(System.Threading.CancellationToken)">
+            <summary>
+            Возвращает последний по дате лог-файл 
+            // NOTE : логику можно задать любую, выбрала ту для примера
             </summary>
         </member>
     </members>

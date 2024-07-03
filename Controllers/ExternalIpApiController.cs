@@ -9,7 +9,7 @@ namespace LoggingMicroservice.Controllers
     [Route("api/[controller]")]
     public class ExternalIpController : ControllerBase
     {
-        private const string HeaderName = "X-Forwarded-Foя";
+        private const string HeaderName = "X-Forwarded-For";
         private readonly ILogger<ExternalIpController> _logger;
 
         public ExternalIpController(ILogger<ExternalIpController> logger)
@@ -41,7 +41,7 @@ namespace LoggingMicroservice.Controllers
             if (Request.Headers.TryGetValue(HeaderName, out var ip))
             {
                 ipAddress = ip.FirstOrDefault();
-                _logger.LogInformation("Client IP Address: {IpAddress}. Method: {Method}", ipAddress, "X-Forwarded-For");
+                _logger.LogInformation("Client IP Address: {IpAddress}. Method: {Method}", ipAddress, HeaderName);
             }
 
             if (string.IsNullOrEmpty(ipAddress))
