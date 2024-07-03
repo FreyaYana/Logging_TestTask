@@ -72,10 +72,11 @@ namespace LoggingMicroservice.Controllers
                      return NotFound("Log file not foun");
                 }
 
-                FileStream fileStream = System.IO.File.OpenRead(filePath);
-                string contentType = "text/plain";
+                var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                var contentType = "text/plain";
 
-                return File(fileStream, contentType, "Log");  
+                return File(fileStream, contentType, "Log");
+ 
             }
             catch (Exception ex)
             {
